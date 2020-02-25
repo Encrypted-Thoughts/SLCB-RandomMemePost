@@ -1,0 +1,47 @@
+{
+	"output_file": "settings.json",
+	"EnableDebug": {
+		"type": "checkbox",
+		"value": false,
+		"label": "Enable Debug",
+		"tooltip": "Enable or disable debug logs",
+		"group": ""
+	},
+	"WebhookUrl": {
+		"type": "textbox",
+		"value": "https://discordapp.com/api/webhooks/YOURWEBHOOK",
+		"label": "Discord Webhook Url",
+		"tooltip": "Create a webhook on your discord server (Server Settings -> Webhooks) then copy the url into this text box.",
+		"group": ""
+	},
+	"Subreddit": {
+		"type": "textbox",
+		"value": "meirl",
+		"label": "Subreddit",
+		"tooltip": "Specify the subreddit from which to pull memes.",
+		"group": ""
+	},
+	"PostFormat": {
+		"type": "textbox",
+		"value": "{\"username\":\"Annoy Brandon Bot\",\"content\":\"[MEME_URL]\"}",
+		"label": "Post Format",
+		"tooltip": "Modify the json format if you so desire. ",
+		"group": "Advanced - Format Options"
+	},
+	"OpenJson": {
+		"type": "button",
+		"label": "Open Json in Formatter",
+		"tooltip": "Opens json on codebeautify.org to help with editing. Minify and paste back into above textbox when done editing.",
+		"wsevent": "",
+		"function": "openjson",
+		"group": "Advanced - Format Options"
+	},
+	"btnreadme": {
+		"type": "button",
+		"label": "open readme",
+		"tooltip": "read this!",
+		"wsevent": "",
+		"function": "openreadme",
+		"group": ""
+	}
+}
