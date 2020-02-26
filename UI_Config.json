@@ -21,6 +21,46 @@
 		"tooltip": "Specify the subreddit from which to pull memes.",
 		"group": ""
 	},
+	"StartHour": {
+		"type": "slider",
+		"label": "Earliest time - Hour",
+		"value": 8,
+		"min": 0,
+		"max": 23,
+		"ticks": 1,
+		"tooltip": "Specify the earliest time in hours at which to post a meme (in local time).",
+		"group": "Time Settings"
+	},
+	"StartMinute": {
+		"type": "slider",
+		"label": "Earliest time - Minute",
+		"value": 0,
+		"min": 0,
+		"max": 59,
+		"ticks": 1,
+		"tooltip": "Specify the earliest time in minutes at which to post a meme (in local time).",
+		"group": "Time Settings"
+	},
+	"EndHour": {
+		"type": "slider",
+		"label": "Latest time - Hour",
+		"value": 20,
+		"min": 0,
+		"max": 23,
+		"ticks": 1,
+		"tooltip": "Specify the latest time in hours at which to post a meme (in local time).",
+		"group": "Time Settings"
+	},
+	"EndMinute": {
+		"type": "slider",
+		"label": "Latest time - Minute",
+		"value": 0,
+		"min": 0,
+		"max": 59,
+		"ticks": 1,
+		"tooltip": "Specify the latest time in minutes at which to post a meme (in local time).",
+		"group": "Time Settings"
+	},
 	"PostFormat": {
 		"type": "textbox",
 		"value": "{\"username\":\"Annoy Brandon Bot\",\"content\":\"[MEME_URL]\"}",

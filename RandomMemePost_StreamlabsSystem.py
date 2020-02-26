@@ -25,8 +25,6 @@ SettingsFile = os.path.join(os.path.dirname(__file__), "settings.json")
 TimestampFile = os.path.join(os.path.dirname(__file__), "timestamp.json")
 ReadMe = os.path.join(os.path.dirname(__file__), "README.txt")
 Time = None
-StartHour = 8
-EndHour = 20
 
 #---------------------------------------
 # Classes
@@ -41,6 +39,10 @@ class Settings(object):
             self.WebhookUrl = "https://discordapp.com/api/webhooks/YOURWEBHOOK"
             self.Subreddit = "meirl"
             self.PostFormat = "{\"username\":\"Annoy Brandon Bot\",\"content\":\"[MEME_URL]\"}"
+            self.StartHour = 8
+            self.StartMinute = 0
+            self.EndHour = 20
+            self.EndMinute = 0
 
     def Reload(self, jsondata):
         self.__dict__ = json.loads(jsondata, encoding="utf-8")
@@ -86,7 +88,7 @@ def Execute(data):
 def Tick():
     global Time
     if Time is None:
-        Time = GetRandomTimestamp(StartHour, EndHour, 0)
+        Time = GetRandomTimestamp(0)
         SaveTimestamp()
         if ScriptSettings.EnableDebug:
             Parent.Log(ScriptName, "Updating Time: " + str(Time))
@@ -100,11 +102,8 @@ def Tick():
         if data["status"] == 200:
             data = json.loads(data["response"])
             send_message(data["url"])
-            Time = GetRandomTimestamp(StartHour, EndHour, 1)
+            Time = GetRandomTimestamp(1)
             SaveTimestamp()
-
-    if ScriptSettings.EnableDebug:
-        Parent.Log(ScriptName, "Time: " + str(Time) + " Now: " + str(datetime.datetime.now()))
 
     return
 
@@ -152,10 +151,10 @@ def SaveTimestamp():
     with open(TimestampFile, 'w') as f:
         f.write(str(Time))
 
-def GetRandomTimestamp(start, end, dayOffset):
+def GetRandomTimestamp(dayOffset):
     now = datetime.datetime.now() + datetime.timedelta(days=dayOffset)
-    startDate = datetime.datetime(now.year, now.month, now.day, start, now.minute, now.second)
-    endDate = datetime.datetime(now.year, now.month, now.day, end, now.minute, now.second)
+    startDate = datetime.datetime(now.year, now.month, now.day, int(ScriptSettings.StartHour), int(ScriptSettings.StartMinute), 0)
+    endDate = datetime.datetime(now.year, now.month, now.day, int(ScriptSettings.EndHour), int(ScriptSettings.EndMinute), 0)
     return startDate + datetime.timedelta(
         seconds=random.randint(0, int((endDate - startDate).total_seconds())),
     )
