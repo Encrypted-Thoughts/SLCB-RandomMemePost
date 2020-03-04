@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import random
+random = random.WichmannHill()
 import datetime
 
 #---------------------------
